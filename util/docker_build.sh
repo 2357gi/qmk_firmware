@@ -34,14 +34,7 @@ else
 	fi
 fi
 if [ -n "$target" ]; then
-	if [ "$(uname)" = "Linux" ] || docker-machine active >/dev/null 2>&1; then
-		usb_args="--privileged -v /dev/bus/usb:/dev/bus/usb"
-	else
-		echo "Error: target requires docker-machine to work on your platform" >&2
-		echo "See http://gw.tnode.com/docker/docker-machine-with-usb-support-on-windows-macos" >&2
-		echo "Consider flashing with QMK Toolbox (https://github.com/qmk/qmk_toolbox) instead" >&2
-		exit 3
-	fi
+	usb_args="--privileged -v /dev/bus/usb:/dev/bus/usb"
 fi
 dir=$(pwd -W 2>/dev/null) || dir=$PWD  # Use Windows path if on Windows
 
